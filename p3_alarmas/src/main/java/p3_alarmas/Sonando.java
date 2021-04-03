@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class Sonando extends AlarmasState{
-	
+
 	private Timer timer = new Timer();
 	private ExpiraTiempoTask expiraTiempoTask;
 

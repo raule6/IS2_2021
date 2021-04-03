@@ -3,10 +3,15 @@ package p3_alarmas;
 import java.util.Date;
 
 public abstract class AlarmasState {
-	
+		
 	protected static Desprogramado estadoDesprogramado = new Desprogramado();
 	protected static Programado estadoProgramado = new Programado();
 	protected static Sonando estadoSonando = new Sonando();
+	
+	public static AlarmasState init(Alarmas context) {
+		estadoDesprogramado.entryAction(context);
+		return estadoDesprogramado;
+	}
 	
 	public void NuevaAlarma(Alarmas context, String id, Date hora) {}
 	

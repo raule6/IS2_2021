@@ -14,7 +14,7 @@ public class Desprogramado extends AlarmasState {
 
 	@Override
 	public void AlarmaOn(Alarmas context, String id) {
-		context.AlarmaOn(id);
+		context.activaAlarma(id);
 		context.SetState(estadoProgramado);
 		estadoProgramado.entryAction(context);
 		estadoProgramado.doAction(context);

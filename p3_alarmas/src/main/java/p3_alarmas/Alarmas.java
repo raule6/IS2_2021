@@ -8,23 +8,27 @@ import java.util.PriorityQueue;
 
 public class Alarmas {
 	// Constantes
-	private static final int INTERVALO_SONAR = 10;
+	private static final int INTERVALO_SONAR = 10000;
 	
 	// Atributos
 	private PriorityQueue<Alarma> alarmasActivas;
 	private List<Alarma> alarmasDesactivadas;
 	private AlarmasState state;
 	
+	private VentanaPrincipal vp;
+	
 	/**
 	 * Contructor del controlador de alarmas
 	 */
-	public Alarmas() {
+	public Alarmas(VentanaPrincipal vp) {
 		alarmasActivas = new PriorityQueue<Alarma>(10, new Comparator<Alarma>() {
 			public int compare(Alarma a1, Alarma a2) {
 				return a1.getHora().compareTo(a2.getHora());
 			}
 		});
 		alarmasDesactivadas = new ArrayList<Alarma>();
+		state = AlarmasState.init(this);
+		this.vp = vp;
 	}
 	
 	/**
@@ -51,11 +55,11 @@ public class Alarmas {
      * y false en caso contrario.
 	 */
 	public boolean anhadeAlarma(Alarma a) {
-		if (!alarmasActivas.contains(a)) {
-			alarmasActivas.add(a);
-			return true;
+		if (buscaAlarmaActiva(a.getID()) != null || buscaAlarmaDesactivada(a.getID()) != null) {
+			return false;
 		}
-		return false;
+		alarmasActivas.add(a);
+		return true;
 	}
 	
 	/**
@@ -68,11 +72,13 @@ public class Alarmas {
 		Alarma alarmaActiva = buscaAlarmaActiva(id);
 		if (alarmaActiva != null) {
 			alarmasActivas.remove(alarmaActiva);
+			vp.updateLists();
 			return true;
 		}
 		Alarma alarmaDesactivada = buscaAlarmaDesactivada(id);
 		if (alarmaDesactivada != null) {
 			alarmasDesactivadas.remove(alarmaDesactivada);
+			vp.updateLists();
 			return true;
 		}
 		return false;
@@ -126,6 +132,7 @@ public class Alarmas {
 	 */
 	public void activarMelodia() {
 		System.out.println("Melodía activa.");
+		vp.sonandoAlarma();
 	}
 	
 	/**
@@ -133,6 +140,7 @@ public class Alarmas {
 	 */
 	public void desactivarMelodia() {
 		System.out.println("Melodía desactivada.");
+		vp.apagandoSonidoAlarma();
 	}
 	
 	// SEÑALES
