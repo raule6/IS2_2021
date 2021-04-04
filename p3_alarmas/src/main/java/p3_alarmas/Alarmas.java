@@ -1,7 +1,6 @@
 package p3_alarmas;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.PriorityQueue;
@@ -21,11 +20,7 @@ public class Alarmas {
 	 * Contructor del controlador de alarmas
 	 */
 	public Alarmas(VentanaPrincipal vp) {
-		alarmasActivas = new PriorityQueue<Alarma>(10, new Comparator<Alarma>() {
-			public int compare(Alarma a1, Alarma a2) {
-				return a1.getHora().compareTo(a2.getHora());
-			}
-		});
+		alarmasActivas = new PriorityQueue<Alarma>();
 		alarmasDesactivadas = new ArrayList<Alarma>();
 		state = AlarmasState.init(this);
 		this.vp = vp;
@@ -145,6 +140,7 @@ public class Alarmas {
 	
 	// SEÑALES
 	public void NuevaAlarma(String id, Date hora) {
+		System.out.println(id + " -> " + hora);
 		state.NuevaAlarma(this, id, hora);
 	}
 	
@@ -178,7 +174,7 @@ public class Alarmas {
 	 * @param id Id de la alarma a buscar.
 	 * @return Devuelve la alarma en el caso de que se encuntre, y null en caso contrario.
 	 */
-	private Alarma buscaAlarmaActiva(String id) {
+	public Alarma buscaAlarmaActiva(String id) {
 		for (Alarma a: alarmasActivas) {
 			if (a.getID().equals(id)) {
 				return a;
@@ -192,7 +188,7 @@ public class Alarmas {
 	 * @param id Id de la alarma a buscar.
 	 * @return Devuelve la alarma en el caso de que se encuntre, y null en caso contrario.
 	 */
-	private Alarma buscaAlarmaDesactivada(String id) {
+	public Alarma buscaAlarmaDesactivada(String id) {
 		for (Alarma a: alarmasDesactivadas) {
 			if (a.getID().equals(id)) {
 				return a;

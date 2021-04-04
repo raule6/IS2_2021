@@ -2,7 +2,7 @@ package p3_alarmas;
 
 import java.util.Date;
 
-public class Alarma {
+public class Alarma implements Comparable<Alarma> {
 	// Atributos
 	private String id;
 	private Date hora;
@@ -44,4 +44,13 @@ public class Alarma {
 	public void setHora(Date nuevaHora) {
 		hora = nuevaHora;
 	}
+	
+	@Override
+    public int compareTo (Alarma a) {
+        if (hora.before(a.hora)) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 }

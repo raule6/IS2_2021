@@ -117,7 +117,7 @@ public class VentanaPrincipal {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				
-				if (idAlarma.getText().isBlank()) {
+				if (idAlarma.getText().isBlank() || alarmasController.buscaAlarmaActiva(idAlarma.getText()) != null || alarmasController.buscaAlarmaDesactivada(idAlarma.getText()) != null) {
 					setMsgAddAlarm("¡Debes introducir una ID válida!", true);
 					return;
 				}
