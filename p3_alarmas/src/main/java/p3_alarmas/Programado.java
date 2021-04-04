@@ -46,40 +46,9 @@ public class Programado extends AlarmasState {
 		}
 		
 		expiraTiempoTask = new ExpiraTiempoTask(context);
-		timer.schedule(expiraTiempoTask, context.alarmaMasProxima().getHora()/*getWhen(context)*/);
+		timer.schedule(expiraTiempoTask, context.alarmaMasProxima().getHora());
 	}
-	/*
-	private Date getWhen(Alarmas context) {
-		// Fecha en la que quieres que suene.
-		Date date = context.alarmaMasProxima().getHora();
-		Calendar c = Calendar.getInstance();
-		c.setTime(date);
-		int h = c.get(Calendar.HOUR);
-		int min = c.get(Calendar.MINUTE);
-		
-		// Fecha actual.
-		Date d = new Date();
-		c = Calendar.getInstance();
-		c.setTime(d);
-		int ah = c.get(Calendar.HOUR);
-		int amin = c.get(Calendar.MINUTE);
-		
-		Date when = new Date();
-		c = Calendar.getInstance();
-		c.setTime(when);
-		c.set(Calendar.HOUR, h);
-		c.set(Calendar.MINUTE, min);
-		c.set(Calendar.SECOND, 0);
-		
-		if (60 * ah + amin > 60 * h + min) {
-			c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) + 1);
-		}
-		
-		when = c.getTime();
-		System.out.println(when);
-		return when;
-	}*/
-	
+
 	@Override
 	public void exitAction(Alarmas context) {
 		expiraTiempoTask.cancel();

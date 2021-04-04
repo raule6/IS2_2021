@@ -27,6 +27,9 @@ import java.util.Calendar;
 import java.awt.Color;
 import javax.swing.JTextPane;
 
+//TODO: prueba sonido
+import java.applet.AudioClip;
+
 public class VentanaPrincipal {
 
 	private JFrame frmAlarma;
@@ -40,6 +43,8 @@ public class VentanaPrincipal {
 	
 	private Timer timer = new Timer();
 	private MsgClearTask task = new MsgClearTask(this);
+	
+	private AudioClip snd = java.applet.Applet.newAudioClip(getClass().getResource("/p3_alarmas/ClockAlarmSound.wav"));
 
 	/**
 	 * Launch the application.
@@ -123,6 +128,7 @@ public class VentanaPrincipal {
 				}
 				
 				Date date = (Date) horaAlarma.getValue();
+				/*Date date = (Date) horaAlarma.getValue();
 				Calendar c = Calendar.getInstance();
 				c.setTime(date);
 				int h = c.get(Calendar.HOUR);
@@ -149,9 +155,9 @@ public class VentanaPrincipal {
 					setMsgAddAlarm("La alarma sonará hoy", false);
 				}
 				
-				when = c.getTime();
+				when = c.getTime();*/
 				
-				alarmasController.NuevaAlarma(idAlarma.getText(), when);
+				alarmasController.NuevaAlarma(idAlarma.getText(), setTime(date));
 				updateLists();
 			}
 		});
@@ -163,7 +169,6 @@ public class VentanaPrincipal {
 		btnApagar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				//TODO: comprobar si funciona
 				alarmasController.Apagar();				
 				updateLists();
 			}
@@ -296,35 +301,8 @@ public class VentanaPrincipal {
 					setMsgOffOn("");
 
 					Date date = a.getHora();
-					Calendar c = Calendar.getInstance();
-					c.setTime(date);
-					int h = c.get(Calendar.HOUR);
-					int min = c.get(Calendar.MINUTE);
 					
-					// Fecha actual.
-					Date d = new Date();
-					c = Calendar.getInstance();
-					c.setTime(d);
-					int ah = c.get(Calendar.HOUR);
-					int amin = c.get(Calendar.MINUTE);
-					
-					Date when = new Date();
-					c = Calendar.getInstance();
-					c.setTime(when);
-					c.set(Calendar.HOUR, h);
-					c.set(Calendar.MINUTE, min);
-					c.set(Calendar.SECOND, 0);
-					
-					if (60 * ah + amin > 60 * h + min) {
-						c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) + 1);
-						setMsgAddAlarm("La alarma sonará mañana", false);
-					} else {
-						setMsgAddAlarm("La alarma sonará hoy", false);
-					}
-					
-					when = c.getTime();
-					
-					a.setHora(when);
+					a.setHora(setTime(date));
 					
 					alarmasController.AlarmaOn(a.getID());
 				}
@@ -362,6 +340,37 @@ public class VentanaPrincipal {
 		listInactive.setModel(modeloInactivo);
 		listInactive.updateUI();
 	}
+	
+	private Date setTime(Date date) {
+		Calendar c = Calendar.getInstance();
+		c.setTime(date);
+		int h = c.get(Calendar.HOUR);
+		int min = c.get(Calendar.MINUTE);
+		
+		// Fecha actual.
+		Date d = new Date();
+		c = Calendar.getInstance();
+		c.setTime(d);
+		int ah = c.get(Calendar.HOUR);
+		int amin = c.get(Calendar.MINUTE);
+		
+		Date when = new Date();
+		c = Calendar.getInstance();
+		c.setTime(when);
+		c.set(Calendar.HOUR, h);
+		c.set(Calendar.MINUTE, min);
+		c.set(Calendar.SECOND, 0);
+		
+		if (60 * ah + amin >= 60 * h + min) {
+			c.set(Calendar.DAY_OF_YEAR, c.get(Calendar.DAY_OF_YEAR) + 1);
+			setMsgAddAlarm("La alarma sonará mañana", false);
+		} else {
+			setMsgAddAlarm("La alarma sonará hoy", false);
+		}
+		
+		when = c.getTime();
+		return when;
+	}
 
 	private void setMsgAddAlarm(String s, boolean error) {
 		if (error) {
@@ -380,12 +389,15 @@ public class VentanaPrincipal {
 		lblMsgOffOn.setText(s);
 	}
 	
-	public void sonandoAlarma() {
+	public void suenaAlarma() {
 		txtAlert.setText("ESTÁ SONANDO UNA ALARMA!");
+		snd.play();
 	}
 	
-	public void apagandoSonidoAlarma() {
+	public void apagaAlarma() {
 		txtAlert.setText("");
+		snd.stop();
+		snd = java.applet.Applet.newAudioClip(getClass().getResource("/p3_alarmas/ClockAlarmSound.wav"));
 	}
 	
 	public class MsgClearTask extends TimerTask {

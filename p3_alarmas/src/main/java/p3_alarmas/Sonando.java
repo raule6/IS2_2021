@@ -13,10 +13,11 @@ public class Sonando extends AlarmasState{
 		expiraTiempoTask.cancel();
 		this.exitAction(context);
 		context.eliminaAlarma(context.alarmaMasProxima().getID());
-		estadoProgramado.doAction(context);
 		context.SetState(estadoProgramado);
+		estadoProgramado.entryAction(context);
+		estadoProgramado.doAction(context);
 	}
-
+	
 	@Override
 	public void entryAction(Alarmas context) {
 		context.activarMelodia();
@@ -31,7 +32,6 @@ public class Sonando extends AlarmasState{
 
 	@Override
 	public void doAction(Alarmas context) {
-		
 	}
 	
 	public class ExpiraTiempoTask extends TimerTask {

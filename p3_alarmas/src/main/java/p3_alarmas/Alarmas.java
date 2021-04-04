@@ -14,7 +14,7 @@ public class Alarmas {
 	private List<Alarma> alarmasDesactivadas;
 	private AlarmasState state;
 	
-	private VentanaPrincipal vp;
+	private VentanaPrincipal interfaz;
 	
 	/**
 	 * Contructor del controlador de alarmas
@@ -23,7 +23,7 @@ public class Alarmas {
 		alarmasActivas = new PriorityQueue<Alarma>();
 		alarmasDesactivadas = new ArrayList<Alarma>();
 		state = AlarmasState.init(this);
-		this.vp = vp;
+		interfaz = vp;
 	}
 	
 	/**
@@ -67,13 +67,13 @@ public class Alarmas {
 		Alarma alarmaActiva = buscaAlarmaActiva(id);
 		if (alarmaActiva != null) {
 			alarmasActivas.remove(alarmaActiva);
-			vp.updateLists();
+			interfaz.updateLists();
 			return true;
 		}
 		Alarma alarmaDesactivada = buscaAlarmaDesactivada(id);
 		if (alarmaDesactivada != null) {
 			alarmasDesactivadas.remove(alarmaDesactivada);
-			vp.updateLists();
+			interfaz.updateLists();
 			return true;
 		}
 		return false;
@@ -126,16 +126,14 @@ public class Alarmas {
 	 * Metodo par activar la melodia de una alarma.
 	 */
 	public void activarMelodia() {
-		System.out.println("Melodía activa.");
-		vp.sonandoAlarma();
+		interfaz.suenaAlarma();
 	}
 	
 	/**
 	 * Metodo par desactivar la melodia de una alarma.
 	 */
 	public void desactivarMelodia() {
-		System.out.println("Melodía desactivada.");
-		vp.apagandoSonidoAlarma();
+		interfaz.apagaAlarma();
 	}
 	
 	// SEÑALES
