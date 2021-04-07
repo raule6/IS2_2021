@@ -1,7 +1,14 @@
-package p3_alarmas;
+package p3_modelo;
 
 import java.util.Date;
 
+import p3_controlador.Alarmas;
+
+/**
+ * Clase que implementa el estado Desprogramado.
+ * @author Pablo y Raúl
+ *
+ */
 public class Desprogramado extends AlarmasState {
 
 	@Override
@@ -20,12 +27,12 @@ public class Desprogramado extends AlarmasState {
 		estadoProgramado.doAction(context);
 	}
 	
-	/** 
+	@Override
+	public void BorraAlarma(Alarmas context, String id) {
 		this.exitAction(context);
-		context.AlarmaOn(id);
-		context.SetState(estadoProgramado);
-		estadoProgramado.entryAction(context);
-		estadoProgramado.doAction(context);
-	 */
+		context.eliminaAlarma(id);
+		this.entryAction(context);
+		this.doAction(context);
+	}
 	
 }

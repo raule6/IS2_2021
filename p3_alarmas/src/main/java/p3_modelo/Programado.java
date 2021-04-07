@@ -1,9 +1,16 @@
-package p3_alarmas;
+package p3_modelo;
 
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import p3_controlador.Alarmas;
+
+/**
+ * Clase que implementa el estado Sonando
+ * @author Pablo y Raúl
+ *
+ */
 public class Programado extends AlarmasState {
 
 	private Timer timer = new Timer();
@@ -22,14 +29,14 @@ public class Programado extends AlarmasState {
 		context.desactivaAlarma(id);
 		this.entryAction(context);
 	}
-	
+
 	@Override
 	public void AlarmaOn(Alarmas context, String id) {
 		this.exitAction(context);
 		context.activaAlarma(id);
 		this.entryAction(context);
 	}
-	
+
 	@Override
 	public void BorraAlarma(Alarmas context, String id) {
 		this.exitAction(context);
@@ -44,7 +51,7 @@ public class Programado extends AlarmasState {
 			estadoDesprogramado.entryAction(context);
 			return;
 		}
-		
+
 		expiraTiempoTask = new ExpiraTiempoTask(context);
 		timer.schedule(expiraTiempoTask, context.alarmaMasProxima().getHora());
 	}
@@ -53,18 +60,31 @@ public class Programado extends AlarmasState {
 	public void exitAction(Alarmas context) {
 		expiraTiempoTask.cancel();
 	}
-	
+
+	/**
+	 * Clase que implementa la tarea a ejecutar cuando el timer precise.
+	 * @author Pablo y Raúl
+	 *
+	 */
 	public class ExpiraTiempoTask extends TimerTask {
-		 private Alarmas context;
-		 public ExpiraTiempoTask (Alarmas c) {
-			 context = c;
-		 }
-		 // Tarea que se ejecuta cuando se alcanza el tiempo
-		 public void run() {
-			 estadoProgramado.exitAction(context);
-			 estadoSonando.entryAction(context);
-			 estadoSonando.doAction(context);
-			 context.SetState(estadoSonando);
-		 }
+
+		// Atributos
+		private Alarmas context;
+		
+		/**
+		 * Constructor de la clase.
+		 * @param c: Contexto de la aplicación.
+		 */
+		public ExpiraTiempoTask (Alarmas c) {
+			context = c;
+		}
+		
+		// Tarea que se ejecuta cuando se alcanza el tiempo
+		public void run() {
+			estadoProgramado.exitAction(context);
+			estadoSonando.entryAction(context);
+			estadoSonando.doAction(context);
+			context.SetState(estadoSonando);
+		}
 	}
 }
