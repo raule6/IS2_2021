@@ -93,7 +93,7 @@ public class VentanaPrincipal {
 
 		frmAlarma = new JFrame();
 		frmAlarma.setResizable(false);
-		frmAlarma.setTitle("Alarma - by Pablo & Raúl");
+		frmAlarma.setTitle("Alarmas - by Pablo & Raúl");
 		frmAlarma.setBounds(100, 100, 470, 440);
 		frmAlarma.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmAlarma.getContentPane().setLayout(null);
