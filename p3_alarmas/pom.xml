@@ -3,4 +3,33 @@
   <groupId>es.unican.is2</groupId>
   <artifactId>p3_alarmas</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <build>
+	<plugins>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<version>3.3.0</version>
+			<configuration>
+				<descriptorRefs>
+					<descriptorRef>jar-with-dependencies</descriptorRef>
+				</descriptorRefs>
+				<archive>
+					<manifest>
+						<mainClass>es.unican.is2.p3_vista.VentanaPrincipal</mainClass>
+					</manifest>
+				</archive>
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<!-- bind to the packaging phase -->
+					<phase>package</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+	</plugins>
+</build>
 </project>

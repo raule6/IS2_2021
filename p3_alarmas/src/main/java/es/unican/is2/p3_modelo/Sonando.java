@@ -1,9 +1,9 @@
-package p3_modelo;
+package es.unican.is2.p3_modelo;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-import p3_controlador.Alarmas;
+import es.unican.is2.p3_controlador.Alarmas;
 
 /**
  * Clase que implementa el estado Sonando

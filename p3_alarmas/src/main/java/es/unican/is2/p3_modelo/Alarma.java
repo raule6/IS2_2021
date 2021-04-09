@@ -1,4 +1,4 @@
-package p3_modelo;
+package es.unican.is2.p3_modelo;
 
 import java.util.Date;
 

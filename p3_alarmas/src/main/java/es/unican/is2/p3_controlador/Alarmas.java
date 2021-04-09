@@ -1,13 +1,13 @@
-package p3_controlador;
+package es.unican.is2.p3_controlador;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.PriorityQueue;
 
-import p3_modelo.Alarma;
-import p3_modelo.AlarmasState;
-import p3_vista.VentanaPrincipal;
+import es.unican.is2.p3_modelo.Alarma;
+import es.unican.is2.p3_modelo.AlarmasState;
+import es.unican.is2.p3_vista.VentanaPrincipal;
 
 /**
  * Clase controlador de alarmas.

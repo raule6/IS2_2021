@@ -1,12 +1,13 @@
-package p3_vista;
-
-import p3_controlador.Alarmas;
-import p3_modelo.Alarma;
+package es.unican.is2.p3_vista;
 
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import es.unican.is2.p3_controlador.Alarmas;
+import es.unican.is2.p3_modelo.Alarma;
+
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JList;
@@ -33,7 +34,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-import java.io.File;
+//import java.io.File;
+import java.net.URL;
 
 /**
  * Clase de la GUI.
@@ -136,7 +138,7 @@ public class VentanaPrincipal {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (btnNuevaAlarma.isEnabled()) {
-					if (idAlarma.getText().isBlank() || alarmasController.buscaAlarmaActiva(idAlarma.getText()) != null || alarmasController.buscaAlarmaDesactivada(idAlarma.getText()) != null) {
+					if (idAlarma.getText() == null || idAlarma.getText().trim().isEmpty() || alarmasController.buscaAlarmaActiva(idAlarma.getText()) != null || alarmasController.buscaAlarmaDesactivada(idAlarma.getText()) != null) {
 						setMsgAddAlarm("¡Debes introducir una ID válida!", true);
 						return;
 					}
@@ -403,7 +405,12 @@ public class VentanaPrincipal {
 		setEnabledMenuOptions(false);
 		txtAlert.setText("ESTÁ SONANDO LA ALARMA " + alarmasController.alarmaMasProxima().getID());
 		try {
-			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/resources/alarmSnd.wav"));
+			//AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/main/java/es.unican.is2.p3_recursos/alarmSnd.wav"));
+			URL url = VentanaPrincipal.class.getClassLoader().getResource("alarmSnd.wav");
+			if (url == null || url.getFile() == null) {
+	            throw new Exception("No resource found at: " + url);
+	        }
+			AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(url);
 			snd = AudioSystem.getClip();
 			snd.open(audioInputStream);
 			snd.loop(Clip.LOOP_CONTINUOUSLY);
