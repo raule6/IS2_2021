@@ -5,7 +5,37 @@
 	<groupId>es.unican.is2</groupId>
 	<artifactId>p4_seguros</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<descriptorRefs>
+						<descriptorRef>jar-with-dependencies</descriptorRef>
+					</descriptorRefs>
+					<archive>
+						<manifest>
+							<mainClass>es.unican.is2.vista.SegurosGUI</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
+				<executions>
+					<execution>
+						<id>make-assembly</id>
+						<!-- bind to the packaging phase -->
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
+		<!-- https://mvnrepository.com/artifact/org.easytesting/fest-swing -->
 		<dependency>
 			<groupId>org.easytesting</groupId>
 			<artifactId>fest-swing</artifactId>
@@ -23,33 +53,4 @@
 			<version>0.0.1</version>
 		</dependency>
 	</dependencies>
-	<build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-assembly-plugin</artifactId>
-			<version>3.3.0</version>
-			<configuration>
-				<descriptorRefs>
-					<descriptorRef>jar-with-dependencies</descriptorRef>
-				</descriptorRefs>
-				<archive>
-					<manifest>
-						<mainClass>es.unican.is2.vista.SegurosGUI</mainClass>
-					</manifest>
-				</archive>
-			</configuration>
-			<executions>
-				<execution>
-					<id>make-assembly</id>
-					<!-- bind to the packaging phase -->
-					<phase>package</phase>
-					<goals>
-						<goal>single</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
-</build>
 </project>

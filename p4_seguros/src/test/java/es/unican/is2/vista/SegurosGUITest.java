@@ -1,11 +1,9 @@
-package es.unican.is2.modelo;
+package es.unican.is2.vista;
 
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import es.unican.is2.vista.SegurosGUI;
 
 public class SegurosGUITest {
 
@@ -26,14 +24,9 @@ public class SegurosGUITest {
 	@Test
 	public void testDatoEntradaIncorrecto() {		
 		// Escribimos una potencia negativa
-		demo.textBox("txtPotencia").deleteText();
-		demo.textBox("txtPotencia").enterText("-10");
-		// Pulsamos el botón de minusvalía
-		demo.radioButton("btnMinusvalia").click();	
+		demo.textBox("txtPotencia").setText("-10");
 		// Escribimos una fecha válida
 		demo.textBox("txtFechaUltimoSiniestro").setText("20/04/2021");
-		// Seleccionamos la cobertura
-		demo.comboBox("comboCobertura").selectItem(0);
 		// Pulsamos el boton
 		demo.button("btnCalcular").click();
 		// Comprobamos la salida
@@ -49,13 +42,8 @@ public class SegurosGUITest {
 
 	@Test
 	public void testFormatoFechaNoValido() {		
-		// Escribimos una potencia negativa
-		demo.textBox("txtPotencia").deleteText();
-		demo.textBox("txtPotencia").enterText("115");
 		// Escribimos una fecha válida
 		demo.textBox("txtFechaUltimoSiniestro").setText("20/04/2021X");
-		// Seleccionamos la cobertura
-		demo.comboBox("comboCobertura").selectItem(2);
 		// Pulsamos el boton
 		demo.button("btnCalcular").click();
 		// Comprobamos la salida
@@ -68,18 +56,17 @@ public class SegurosGUITest {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Test
 	public void testPrecioCorrecto() {		
 		// Escribimos una potencia negativa
-		demo.textBox("txtPotencia").deleteText();
-		demo.textBox("txtPotencia").enterText("200");
+		demo.textBox("txtPotencia").setText("200");
 		// Pulsamos el botón de minusvalía
 		demo.radioButton("btnMinusvalia").click();	
 		// Escribimos una fecha válida
 		demo.textBox("txtFechaUltimoSiniestro").setText("01/05/2016");
 		// Seleccionamos la cobertura
-		demo.comboBox("comboCobertura").selectItem(1);
+		demo.comboBox("comboCobertura").selectItem("TERCEROS_LUNAS");
 		// Pulsamos el boton
 		demo.button("btnCalcular").click();
 		// Comprobamos la salida
@@ -94,4 +81,3 @@ public class SegurosGUITest {
 	}
 
 }
-
