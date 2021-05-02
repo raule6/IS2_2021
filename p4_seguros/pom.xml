@@ -17,5 +17,10 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>es.unican.is2</groupId>
+			<artifactId>ListaOrdenada</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 </project>
