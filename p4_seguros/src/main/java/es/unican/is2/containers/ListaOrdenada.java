@@ -20,7 +20,12 @@ public class ListaOrdenada<E extends Comparable<E>> implements IListaOrdenada<E>
 
 
 
-	public void add(E elemento) {
+	public void add(E elemento) throws NullPointerException {
+		
+		if (elemento == null) {
+			throw new NullPointerException();
+		}
+		
 		// busca el lugar donde debe insertarse
 		int indice = 0;
 		if (lista.size() != 0) {

@@ -101,7 +101,7 @@ public class ListaOrdenadaTest {
 		try {
 			lista.add(null);
 			fail("No se ha detectado la excepción");
-		} catch (Exception e) {}
+		} catch (NullPointerException e) {}
 
 		// No Válido get(2) en []
 		try {
