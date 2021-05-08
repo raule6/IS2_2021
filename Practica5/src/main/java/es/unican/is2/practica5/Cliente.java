@@ -26,6 +26,7 @@ public class Cliente {
 	public String telefono;
 	public String dni;
 	
+	
     private List<Cuenta> Cuentas = new LinkedList<Cuenta>();
 
     /*
