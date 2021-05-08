@@ -1,13 +1,10 @@
-<<<<<<< HEAD:p4_seguros/src/test/java/es/unican/is2/p4_seguros/vista/SegurosGUITest.java
 /*package es.unican.is2.p4_seguros.vista;
-=======
-package es.unican.is2.vista;
->>>>>>> a805e239a7693ecfdb0f34435eb96e5b6facd5bc:p4_seguros/src/test/java/es/unican/is2/vista/SegurosGUITest.java
 
 import org.fest.swing.fixture.FrameFixture;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 
 public class SegurosGUITest {
 
@@ -84,8 +81,4 @@ public class SegurosGUITest {
 		}
 	}
 
-<<<<<<< HEAD:p4_seguros/src/test/java/es/unican/is2/p4_seguros/vista/SegurosGUITest.java
 }*/
-=======
-}
->>>>>>> a805e239a7693ecfdb0f34435eb96e5b6facd5bc:p4_seguros/src/test/java/es/unican/is2/vista/SegurosGUITest.java
