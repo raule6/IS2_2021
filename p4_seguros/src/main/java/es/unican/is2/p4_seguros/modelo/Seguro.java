@@ -1,4 +1,4 @@
-package es.unican.is2.modelo;
+package es.unican.is2.p4_seguros.modelo;
 
 import java.time.LocalDate;
 

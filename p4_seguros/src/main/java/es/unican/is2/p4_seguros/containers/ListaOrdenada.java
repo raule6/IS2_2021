@@ -1,6 +1,8 @@
-package es.unican.is2.containers;
+package es.unican.is2.p4_seguros.containers;
 
 import java.util.ArrayList;
+
+import es.unican.is2.containers.IListaOrdenada;
 
 /**
  * Clase que implementa una lista ordenada 

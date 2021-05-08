@@ -1,14 +1,14 @@
-package es.unican.is2.vista;
+package es.unican.is2.p4_seguros.vista;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import es.unican.is2.modelo.Cliente;
-import es.unican.is2.modelo.Cobertura;
-import es.unican.is2.modelo.DatoIncorrectoException;
-import es.unican.is2.modelo.Seguro;
+import es.unican.is2.p4_seguros.modelo.Cliente;
+import es.unican.is2.p4_seguros.modelo.Cobertura;
+import es.unican.is2.p4_seguros.modelo.DatoIncorrectoException;
+import es.unican.is2.p4_seguros.modelo.Seguro;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;

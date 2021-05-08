@@ -1,8 +1,9 @@
-package es.unican.is2.containers;
+package es.unican.is2.p4_seguros.containers;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
 
 public class ListaOrdenadaTest {
 

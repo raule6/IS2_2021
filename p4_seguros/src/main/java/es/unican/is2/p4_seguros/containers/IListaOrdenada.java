@@ -1,4 +1,4 @@
-package es.unican.is2.containers;
+package es.unican.is2.p4_seguros.containers;
 
 /**
  * TDA ListaOrdenada 
