@@ -24,9 +24,7 @@ public class Cliente {
 	 */
 	
 	public String nombre;
-	public String calle;
-	public String zip;
-	public String localidad;
+	public Direccion direccion;
 	public String telefono;
 	public String dni;
 	
@@ -37,12 +35,9 @@ public class Cliente {
 	 * CC => 1
 	 * CCog => 0
 	 */
- 	public Cliente(String titular, String calle, String zip, String localidad,  
- 			String telefono, String dni) {  // CC +1, CCog +0
+ 	public Cliente(String titular, Direccion direccion, String telefono, String dni) {  // CC +1, CCog +0
 		this.nombre = titular;
-		this.calle = calle;
-		this.zip = zip;
-		this.localidad = localidad;
+		this.direccion = direccion;
 		this.telefono = telefono;
 		this.dni = dni;
 	}
@@ -52,9 +47,9 @@ public class Cliente {
 	 * CCog => 0
 	 */
 	public void cambiaDireccion(String calle, String zip, String localidad) { // CC +1, CCog +0
-		this.calle = calle;
-		this.zip = zip;
-		this.localidad = localidad;
+		this.direccion.setCalle(calle);
+		this.direccion.setZip(zip);
+		this.direccion.setLocalidad(localidad);
 	}
 	
 	/*

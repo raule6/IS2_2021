@@ -11,55 +11,55 @@ import java.time.LocalDateTime;
  * CBO => 2 (Crédito, CuentaAhorro)
  */
 public class Movimiento {
-	private String mConcepto;
-	private LocalDateTime mFecha;
-	private double mImporte;
+	private String concepto;
+	private LocalDateTime fecha;
+	private double importe;
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public double getI() { // CC +1, CCog +0
-		return mImporte;
+	public double getImporte() { // CC +1, CCog +0
+		return importe;
 	}
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public String getC() { // CC +1, CCog +0
-		return mConcepto;
+	public String getConcepto() { // CC +1, CCog +0
+		return concepto;
 	}
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public void setC(String newMConcepto) { // CC +1, CCog +0
-		mConcepto = newMConcepto;
+	public void setConcepto(String newMConcepto) { // CC +1, CCog +0
+		concepto = newMConcepto;
 	}
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public LocalDateTime getF() { // CC +1, CCog +0
-		return mFecha;
+	public LocalDateTime getFecha() { // CC +1, CCog +0
+		return fecha;
 	}
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public void setF(LocalDateTime newMFecha) { // CC +1, CCog +0
-		mFecha = newMFecha;
+	public void setFecha(LocalDateTime newMFecha) { // CC +1, CCog +0
+		fecha = newMFecha;
 	}
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public void setI(double newMImporte) { // CC +1, CCog +0
-		mImporte = newMImporte;
+	public void setImporte(double newMImporte) { // CC +1, CCog +0
+		importe = newMImporte;
 	}
 }

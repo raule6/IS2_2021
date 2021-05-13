@@ -1,16 +1,12 @@
 package es.unican.is2.practica5;
 
 import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 
 import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-import es.unican.is2.practica5.*;
 
 public class CuentaAhorroTest {
 	private CuentaAhorro sut;

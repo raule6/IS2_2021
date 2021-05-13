@@ -1,17 +1,10 @@
 package es.unican.is2.practica5;
 
 import static org.junit.Assert.assertTrue;
-
-import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
-
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
-
-import es.unican.is2.practica5.CuentaValores;
-import es.unican.is2.practica5.Valor;
 
 public class CuentaValoresTest {
 	private CuentaValores sut;

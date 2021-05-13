@@ -9,35 +9,39 @@ package es.unican.is2.practica5;
  * CBO => 5 (CuentaAhorro, Crédito, Debito, datoErroneoException, saldoInsuficienteException)
  */
 public abstract class Tarjeta {
-	protected String mNumero, mTitular;		
-	protected CuentaAhorro mCuentaAsociada;
+	protected String numero, titular;		
+	protected CuentaAhorro cuentaAsociada;
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Tarjeta(String numero, String titular, CuentaAhorro c) { // CC +1, CCog +0
-		mNumero = numero;
-		mTitular = titular;
-		mCuentaAsociada = c;
+	public Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro) { // CC +1, CCog +0
+		this.numero = numero;
+		this.titular = titular;
+		this.cuentaAsociada = cuentaAhorro;
 	}
 
 	/**
 	 * Retirada de dinero en cajero con la tarjeta
-	 * @param x Cantidad a retirar. 
-	 * @throws saldoInsuficienteException
-	 * @throws datoErroneoException
+	 * @param importe Cantidad a retirar. 
+	 * @throws SaldoInsuficienteException
+	 * @throws DatoErroneoException
 	 */
-	public abstract void retirar(double x) throws saldoInsuficienteException, datoErroneoException;
+	public abstract void retirar(double importe) throws SaldoInsuficienteException, DatoErroneoException;
 
 	/**
 	 * Pago en establecimiento con la tarjeta
 	 * @param datos Concepto del pago
-	 * @param x Cantidada a pagar
-	 * @throws saldoInsuficienteException
-	 * @throws datoErroneoException
+	 * @param importe Cantidada a pagar
+	 * @throws SaldoInsuficienteException
+	 * @throws DatoErroneoException
 	 */
-	public abstract void pagoEnEstablecimiento(String datos, double x)
-			throws saldoInsuficienteException, datoErroneoException;
+	public abstract void pagoEnEstablecimiento(String datos, double importe)
+			throws SaldoInsuficienteException, DatoErroneoException;
+
+	public Cuenta getCuentaAsociada() { // CC +1, CCog +0
+		return cuentaAsociada;
+	}
 	
 }
