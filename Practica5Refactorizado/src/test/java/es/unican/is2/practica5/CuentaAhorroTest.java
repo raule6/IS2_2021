@@ -1,6 +1,5 @@
 package es.unican.is2.practica5;
 
-import java.time.LocalDate;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -23,13 +22,11 @@ public class CuentaAhorroTest {
 
 	@Before
 	public void setUpBeforeClass() throws Exception {
-		sut = new CuentaAhorro("794311", LocalDate.now().plusYears(3), LocalDate.now().plusYears(4));
+		sut = new CuentaAhorro("794311");
 	}
 
 	@Test
 	public void testConstructor() {
-		assertTrue(sut.getCaducidadDebito().equals(LocalDate.now().plusYears(3)));
-		assertTrue(sut.getCaducidadCredito().equals(LocalDate.now().plusYears(4)));
 		assertTrue(sut.getLimiteDebito()==1000);
 		assertTrue(sut.getMovimientos().size()==0);
 		assertTrue(sut.getNumCuenta().equals("794311"));

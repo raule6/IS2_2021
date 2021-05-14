@@ -1,5 +1,7 @@
 package es.unican.is2.practica5;
 
+import java.time.LocalDate;
+
 /*
  * WMC => 1
  * WMCn => 1/1
@@ -11,15 +13,17 @@ package es.unican.is2.practica5;
 public abstract class Tarjeta {
 	protected String numero, titular;		
 	protected CuentaAhorro cuentaAsociada;
+	private LocalDate fechaDeCaducidad;
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro) { // CC +1, CCog +0
+	public Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
 		this.numero = numero;
 		this.titular = titular;
 		this.cuentaAsociada = cuentaAhorro;
+		this.fechaDeCaducidad = fechaCaducidad;
 	}
 
 	/**
@@ -44,4 +48,11 @@ public abstract class Tarjeta {
 		return cuentaAsociada;
 	}
 	
+	/*
+	 * CC => 1
+	 * CCog => 0
+	 */
+	public LocalDate getCaducidad() { // CC +1, CCog +0
+		return this.fechaDeCaducidad;
+	}
 }

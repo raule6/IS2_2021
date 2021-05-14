@@ -24,8 +24,8 @@ public class Credito extends Tarjeta {
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Credito(String numero, String titular, CuentaAhorro cuentaAhorro, double credito) { // CC +1, CCog +0
-		super(numero, titular, cuentaAhorro);
+	public Credito(String numero, String titular, CuentaAhorro cuentaAhorro, double credito, LocalDate fechaCaducidad) { // CC +1, CCog +0
+		super(numero, titular, cuentaAhorro, fechaCaducidad);
 		this.credito = credito;
 		movimientosMensuales = new LinkedList<Movimiento>();
 		historicoMovimientos = new LinkedList<Movimiento>();
@@ -92,14 +92,6 @@ public class Credito extends Tarjeta {
 			gastosAcumulados += movimiento.getImporte();
 		}
 		return -gastosAcumulados;
-	}
-	
-    /*
-	 * CC => 1
-	 * CCog => 0
-	 */
-	public LocalDate getCaducidadCredito() { // CC +1, CCog +0
-		return this.cuentaAsociada.getCaducidadCredito();
 	}
 
 	/*

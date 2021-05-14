@@ -18,8 +18,8 @@ public class Debito extends Tarjeta {
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Debito(String numero, String titular, CuentaAhorro cuentaAhorro) { // CC +1, CCog +0
-		super(numero, titular, cuentaAhorro);
+	public Debito(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
+		super(numero, titular, cuentaAhorro, fechaCaducidad);
 	}
 	
 	/*
@@ -46,14 +46,6 @@ public class Debito extends Tarjeta {
 		}
 		this.cuentaAsociada.retirar("Compra en : " + datos, importe);
 		saldoDiarioDisponible -= importe;
-	}
-	
-	/*
-	 * CC => 1
-	 * CCog => 0
-	 */
-	public LocalDate getCaducidadDebito() { // CC +1, CCog +0
-		return this.cuentaAsociada.getCaducidadDebito();
 	}
 	
 	/*
