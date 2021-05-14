@@ -6,14 +6,14 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * WMC => 16
- * WMCn => 16/9
+ * WMC => 14
+ * WMCn => 14/7
  * CCog => 7
  * DIT => 1
  * NOC => 0
- * CBO => 6 (Tarjeta, Movimiento, Cuenta, CuentaAhorro, saldoInsuficienteException, datoErroneoException)
+ * CBO => 5 (Tarjeta, Movimiento, CuentaAhorro, SaldoInsuficienteException, DatoErroneoException)
  */
-public class Credito extends Tarjeta {
+public class TarjetaCredito extends Tarjeta {
 	
 	private static final double COMISION = 0.05;
 	private double credito;
@@ -24,7 +24,7 @@ public class Credito extends Tarjeta {
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Credito(String numero, String titular, CuentaAhorro cuentaAhorro, double credito, LocalDate fechaCaducidad) { // CC +1, CCog +0
+	public TarjetaCredito(String numero, String titular, CuentaAhorro cuentaAhorro, double credito, LocalDate fechaCaducidad) { // CC +1, CCog +0
 		super(numero, titular, cuentaAhorro, fechaCaducidad);
 		this.credito = credito;
 		movimientosMensuales = new LinkedList<Movimiento>();

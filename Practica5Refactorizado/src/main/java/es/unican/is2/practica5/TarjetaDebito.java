@@ -3,14 +3,14 @@ package es.unican.is2.practica5;
 import java.time.LocalDate;
 
 /*
- * WMC => 8
- * WMCn => 8/6
+ * WMC => 6
+ * WMCn => 6/4 = 1.5
  * CCog => 2
  * DIT => 1
  * NOC => 0
- * CBO => 4 (Crédito, Tarjeta, datoErroneoException, saldoInsuficienteException)
+ * CBO => 4 (Crédito, Tarjeta, DatoErroneoException, SaldoInsuficienteException)
  */
-public class Debito extends Tarjeta {
+public class TarjetaDebito extends Tarjeta {
 	
 	private double saldoDiarioDisponible;
 
@@ -18,7 +18,7 @@ public class Debito extends Tarjeta {
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Debito(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
+	public TarjetaDebito(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
 		super(numero, titular, cuentaAhorro, fechaCaducidad);
 	}
 	

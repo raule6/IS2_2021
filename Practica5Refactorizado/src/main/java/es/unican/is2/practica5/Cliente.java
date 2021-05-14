@@ -9,7 +9,7 @@ import java.util.List;
  * CCog => 10
  * DIT => 0
  * NOC => 0
- * CBO => 4 (Cuenta, Valor, CuentaValores, CuentaAhorro)
+ * CBO => 5 (Cuenta, Valor, CuentaValores, CuentaAhorro, Direccion)
  */
 public class Cliente {
 	/*

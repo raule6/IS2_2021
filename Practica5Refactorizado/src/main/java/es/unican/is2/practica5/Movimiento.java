@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 /*
  * WMC => 6
- * WMCn => 6/6
+ * WMCn => 6/6 = 1
  * CCog => 0
  * DIT => 0
  * NOC => 0

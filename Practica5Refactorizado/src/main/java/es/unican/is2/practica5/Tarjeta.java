@@ -3,12 +3,12 @@ package es.unican.is2.practica5;
 import java.time.LocalDate;
 
 /*
- * WMC => 1
- * WMCn => 1/1
+ * WMC => 3
+ * WMCn => 3/3 = 1
  * CCog => 0
  * DIT => 0
  * NOC => 2
- * CBO => 5 (CuentaAhorro, Crédito, Debito, datoErroneoException, saldoInsuficienteException)
+ * CBO => 6 (CuentaAhorro, Crédito, Debito, DatoErroneoException, SaldoInsuficienteException, Cuenta)
  */
 public abstract class Tarjeta {
 	protected String numero, titular;		
@@ -43,7 +43,11 @@ public abstract class Tarjeta {
 	 */
 	public abstract void pagoEnEstablecimiento(String datos, double importe)
 			throws SaldoInsuficienteException, DatoErroneoException;
-
+	
+	/*
+	 * CC => 1
+	 * CCog => 0
+	 */
 	public Cuenta getCuentaAsociada() { // CC +1, CCog +0
 		return cuentaAsociada;
 	}

@@ -4,7 +4,7 @@ import java.util.List;
 
 /*
  * WMC => 3
- * WMCn => 3/3
+ * WMCn => 3/3 = 1
  * CCog => 0
  * DIT => 1
  * NOC => 0

@@ -5,43 +5,39 @@ import java.util.LinkedList;
 import java.util.List;
 
 /*
- * WMC => 18
- * WMCn => 18/11
- * CCog => 7
+ * WMC => 13
+ * WMCn => 13/7 = 1.86
+ * CCog => 6
  * DIT => 1
  * NOC => 0
- * CBO => 8 (Cuenta, Cliente, Crédito, Tarjeta, Debito, Movimiento, datoErroneoException, saldoInsuficienteException)
+ * CBO => 8 (Cuenta, Cliente, Crédito, Tarjeta, Debito, Movimiento, DatoErroneoException, SaldoInsuficienteException)
  */
 public class CuentaAhorro extends Cuenta {
 
 	private List<Movimiento> movimientos;
-	//private LocalDate fechaDeCaducidadTarjetaDebito;
-	//private LocalDate fechaDeCaducidadTarjetaCredito;
 	private double limiteDebito;
 
 	/*
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public CuentaAhorro(String numCuenta/*, LocalDate date, LocalDate date2*/) { // CC +1, CCog +0
+	public CuentaAhorro(String numCuenta) { // CC +1, CCog +0
 		super(numCuenta);
-		//this.fechaDeCaducidadTarjetaDebito = date;
-		//this.fechaDeCaducidadTarjetaCredito = date2;
 		movimientos = new LinkedList<Movimiento>();
 		limiteDebito = 1000;
 	}
 
 	/*
-	 * CC => 2
-	 * CCog => 1
+	 * CC => 3
+	 * CCog => 2
 	 */
-	public void ingresar(String concepto, double importe) throws DatoErroneoException { // CC +1, CCog +0
-		if (importe <= 0) // CC +1, CCog +1
+	public void ingresar(String concepto, double importe) throws DatoErroneoException { 		// CC +1, CCog +0
+		if (importe <= 0) 																		// CC +1, CCog +1
 			throw new DatoErroneoException("No se puede ingresar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		m.setFecha(now);
-		if (concepto == null) {
+		if (concepto == null) {																	// CC +1, CCog +1
 			m.setConcepto("Ingreso en efectivo");
 		} else {
 			m.setConcepto(concepto);
@@ -51,18 +47,18 @@ public class CuentaAhorro extends Cuenta {
 	}
 	
 	/*
-	 * CC => 3
-	 * CCog => 2
+	 * CC => 4
+	 * CCog => 3
 	 */
-	public void retirar(String concepto, double importe) throws SaldoInsuficienteException, DatoErroneoException { // CC +1, CCog +0
-		if (getSaldo() < importe) // CC +1, CCog +1
+	public void retirar(String concepto, double importe) throws SaldoInsuficienteException, DatoErroneoException { 	// CC +1, CCog +0
+		if (getSaldo() < importe) 																					// CC +1, CCog +1
 			throw new SaldoInsuficienteException("Saldo insuficiente");
-		if (importe <= 0) // CC +1, CCog +1
+		if (importe <= 0) 																							// CC +1, CCog +1
 			throw new DatoErroneoException("No se puede retirar una cantidad negativa");
 		Movimiento m = new Movimiento();
 		LocalDateTime now = LocalDateTime.now();
 		m.setFecha(now);
-		if (concepto == null) {
+		if (concepto == null) { 																					// CC +1, CCog +1
 			m.setConcepto("Retirada de efectivo");
 		} else {
 			m.setConcepto(concepto);
@@ -99,8 +95,6 @@ public class CuentaAhorro extends Cuenta {
 	public List<Movimiento> getMovimientos() { // CC +1, CCog +0
 		return movimientos;
 	}
-
-	
 
 	/*
 	 * CC => 1
