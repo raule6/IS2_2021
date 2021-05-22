@@ -88,7 +88,7 @@ public class TarjetaCredito extends Tarjeta {
     public double getGastosAcumulados() { // CC +1, CCog +0
 		double gastosAcumulados = 0.0;
 		for (int i = 0; i < this.movimientosMensuales.size(); i++) { // CC +1, CCog +1
-			Movimiento movimiento = (Movimiento) movimientosMensuales.get(i);
+			Movimiento movimiento = movimientosMensuales.get(i);
 			gastosAcumulados += movimiento.getImporte();
 		}
 		return -gastosAcumulados;
@@ -108,7 +108,7 @@ public class TarjetaCredito extends Tarjeta {
 		movimiento.setConcepto("Liquidación de operaciones tarjeta crédito");
 		double importe = 0.0;
 		for (int i = 0; i < this.movimientosMensuales.size(); i++) { // CC +1, CCog +1
-			Movimiento m = (Movimiento) movimientosMensuales.get(i);
+			Movimiento m = movimientosMensuales.get(i);
 			importe += m.getImporte();
 		}
 		movimiento.setImporte(importe);

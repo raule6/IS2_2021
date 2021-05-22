@@ -11,7 +11,8 @@ import java.time.LocalDate;
  * CBO => 6 (CuentaAhorro, Crédito, Debito, DatoErroneoException, SaldoInsuficienteException, Cuenta)
  */
 public abstract class Tarjeta {
-	protected String numero, titular;		
+	protected String numero;
+	protected String titular;		
 	protected CuentaAhorro cuentaAsociada;
 	private LocalDate fechaDeCaducidad;
 
@@ -19,7 +20,7 @@ public abstract class Tarjeta {
 	 * CC => 1
 	 * CCog => 0
 	 */
-	public Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
+	protected Tarjeta(String numero, String titular, CuentaAhorro cuentaAhorro, LocalDate fechaCaducidad) { // CC +1, CCog +0
 		this.numero = numero;
 		this.titular = titular;
 		this.cuentaAsociada = cuentaAhorro;

@@ -12,24 +12,13 @@ import java.util.List;
  * CBO => 5 (Cuenta, Valor, CuentaValores, CuentaAhorro, Direccion)
  */
 public class Cliente {
-	/*
-	 * CC suma método, condición o bucle
-	 * CCog no suma método y lo demás según su anidamiento +1, +2, +3 etc
-	 * 
-	 * La CC es nº de condiciones +1
-	 * La CCog varía según tipo
-	 * if (a & b) CC +2 CCog +2
-	 * if (a & b | c) CC +3, CCog +3
-	 * if (a & b & c) CC +3, CCog +2
-	 */
 	
-	public String nombre;
-	public Direccion direccion;
-	public String telefono;
-	public String dni;
+	protected String nombre;
+	private Direccion direccion;
+	protected String telefono;
+	protected String dni;
 	
-	
-    private List<Cuenta> Cuentas = new LinkedList<Cuenta>();
+    private List<Cuenta> cuentas = new LinkedList<Cuenta>();
 
     /*
 	 * CC => 1
@@ -58,7 +47,7 @@ public class Cliente {
 	 */
 	public double getSaldoTotal() { // CC +1, CCog +0
 		double total = 0.0;
-		for (Cuenta c: Cuentas) {  // CC +1, Ccog +1
+		for (Cuenta c: cuentas) {  // CC +1, Ccog +1
 			if (c instanceof CuentaAhorro) { // CC +1, Ccog +2
 				total += ((CuentaAhorro) c).getSaldo();
 			} else if (c instanceof CuentaValores)  { // CC +1, Ccog +3 (el if está anidado)
@@ -75,7 +64,7 @@ public class Cliente {
 	 * CCog => 0
 	 */
 	public void anhadeCuenta(Cuenta c) { // CC +1, CCog +0
-		Cuentas.add(c);
+		cuentas.add(c);
 	}
 	
 }

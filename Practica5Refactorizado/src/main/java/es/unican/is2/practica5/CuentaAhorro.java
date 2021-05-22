@@ -74,7 +74,7 @@ public class CuentaAhorro extends Cuenta {
 	public double getSaldo() { // CC +1, CCog +0
 		double saldo = 0.0;
 		for (int i = 0; i < this.movimientos.size(); i++) { // CC +1, CCog +1
-			Movimiento m = (Movimiento) movimientos.get(i);
+			Movimiento m = movimientos.get(i);
 			saldo += m.getImporte();
 		}
 		return saldo;
